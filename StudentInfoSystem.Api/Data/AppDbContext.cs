@@ -25,7 +25,7 @@ namespace StudentInfoSystem.Api.Data
         {
 			modelbuilder.ApplyConfiguration(new StudentEntityConfiguration());
 
-            // Bu satır EF Core’un kendi temel ayarlarını da uygular
+            // This line also applies EF Core's default configuration settings.
             base.OnModelCreating(modelbuilder);
         }
     }

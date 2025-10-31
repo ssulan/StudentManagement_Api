@@ -27,7 +27,7 @@ namespace StudentInfoSystem.Api.Controllers
         [HttpGet("get")]
         public async Task<IActionResult> Get()
         {
-            List<StudentModel> students = new();
+            List<StudentModel> students = new(); //Created to be displayed in a table format on the web.
 
             var dbStudents = await _dbContext.Students.ToListAsync();
 
@@ -46,7 +46,7 @@ namespace StudentInfoSystem.Api.Controllers
             return Ok(students);
         }
 
-        // GET api/values/5
+        // GET api/values/5 -- Not used for this prject
         [HttpGet("get/{id}")]
         public async Task<IActionResult> Get(int id)
         {
@@ -80,7 +80,7 @@ namespace StudentInfoSystem.Api.Controllers
             }
             catch (DbUpdateException ex)
             {
-                // SQL Unique constraint hatasını yakalamak
+                // SQL Unique constraint error catch
                 if (ex.InnerException != null && ex.InnerException.Message.Contains("IX_Students_Number"))
                 {
                     return BadRequest("Number must be unique. This student number already exists.");

@@ -20,20 +20,20 @@ namespace StudentInfoSystem.Api.Data
                     var studentFaker = new Faker<StudentEntity>()
                     .RuleFor(s => s.FirstName, f =>
                     {
-                        var firstName = f.Name.FirstName() ?? "Ahmet";
+                        var firstName = f.Name.FirstName() ?? "John";
                         return firstName.Length <= 50 ? firstName : firstName.Substring(0, 50);
                     })
                     .RuleFor(s => s.LastName, f =>
                     {
-                        var lastName = f.Name.LastName() ?? "Kara";
+                        var lastName = f.Name.LastName() ?? "Wick";
                         return lastName.Length <= 100 ? lastName : lastName.Substring(0,100);
                     })
-                    .RuleFor(s => s.Branch, f => f.PickRandom(new[] { "A", "B", "C", "D", "E" })) // tek karakter
+                    .RuleFor(s => s.Branch, f => f.PickRandom(new[] { "A", "B", "C", "D", "E" })) //list of Branch
                     .RuleFor(s => s.Number, f =>
                     {
                         var firstDigit = f.Random.Number(1, 9).ToString();
-                        var remainingDigits = f.Random.String2(4, "0123456789"); // her zaman bu rakamlardan 4 tane al
-                        return firstDigit + remainingDigits; // toplam 5 karakter
+                        var remainingDigits = f.Random.String2(4, "0123456789"); //always 4 digit
+                        return firstDigit + remainingDigits; // total 5 character
                     });
 
 
@@ -43,19 +43,19 @@ namespace StudentInfoSystem.Api.Data
                     await dbContext.SaveChangesAsync();
 
                     Console.Clear();
-                    Console.WriteLine("Data Created Successfuly");
+                    Console.WriteLine("Data Created Successfuly"); //for test
 
                 }
                 else
                 {
                     Console.Clear();
-                    Console.WriteLine("Data Already Exist.");
+                    Console.WriteLine("Data Already Exist."); //for test
                 }
             }
             catch (Exception ex)
             {
                 Console.Clear();
-                Console.WriteLine("Data Creation Failed.");
+                Console.WriteLine("Data Creation Failed."); //for test
                 Console.WriteLine(ex.Message);
             }
 
