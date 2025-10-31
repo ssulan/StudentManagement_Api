@@ -52,7 +52,7 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.UseCors("AllowAll"); // pipeline'da UseCors eklenmeli
+app.UseCors("AllowAll"); // pipeline'da UseCors
 
 //-------------------SCOPE----------
 using (var scope = app.Services.CreateScope())
